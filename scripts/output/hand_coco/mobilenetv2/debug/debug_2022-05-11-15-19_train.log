@@ -1,0 +1,116 @@
+2022-05-11 15:19:31,899 Namespace(cfg='/workspace/nas-data/deep-hand-pose-net/experiments/hand_coco/debug.yaml', opts=[])
+2022-05-11 15:19:31,901 AUTO_RESUME: True
+CUDNN:
+  BENCHMARK: True
+  DETERMINISTIC: False
+  ENABLED: True
+DATASET:
+  BLUR: True
+  COLOR: True
+  COLOR_RGB: True
+  DATASET: hand_coco
+  DATA_FORMAT: jpg
+  FLIP: True
+  GRAY: True
+  HYBRID_JOINTS_TYPE: 
+  NUM_JOINTS_HALF_BODY: 8
+  PROB_HALF_BODY: 0.0
+  ROOT: /workspace/cpfs-data/Data/debug
+  ROT_FACTOR: 20
+  SCALE_FACTOR: 0.1
+  SELECT_DATA: False
+  SHIFT: True
+  SHIFT_FACTOR: 0.05
+  TEST_SET: test2017
+  TRAIN_SET: train2017
+  VAL_SET: val2017
+DATA_DIR: 
+DEBUG:
+  DEBUG: False
+  SAVE_BATCH_IMAGES_GT: True
+  SAVE_BATCH_IMAGES_PRED: True
+  SAVE_HEATMAPS_GT: True
+  SAVE_HEATMAPS_PRED: True
+GPUS: (0,)
+LOG_DIR: log
+LOSS:
+  TOPK: 8
+  TYPE: heatmap
+  USE_DIFFERENT_JOINTS_WEIGHT: True
+  USE_OHKM: False
+  USE_TARGET_WEIGHT: True
+MODEL:
+  ALIGNMENT: False
+  EXTRA:
+    DECODER: CoarseRefineDecoder
+    NET_TYPE: v3
+    NUM_DECONV_FILTERS: 32
+  HEATMAP_SIZE: [40, 40]
+  IMAGE_SIZE: [160, 160]
+  INIT_WEIGHTS: True
+  MULTI_SUPERVISION: False
+  NAME: mobilenetv2
+  NUM_JOINTS: 21
+  PRETRAINED: 
+  REG_BRANCH: False
+  SIGMA: 1
+  TAG_PER_JOINT: True
+  TARGET_TYPE: gaussian
+OUTPUT_DIR: output
+PIN_MEMORY: True
+PRINT_FREQ: 100
+RANK: 0
+TEST:
+  BATCH_SIZE_PER_GPU: 512
+  BBOX_THRE: 1.0
+  COCO_BBOX_FILE: 
+  FLIP_TEST: False
+  IMAGE_THRE: 0.0
+  IN_VIS_THRE: 0.2
+  MODEL_FILE: mobilenetv2_160x160_alpha_140_coarserefine_data_v2_4
+  NMS_THRE: 1.0
+  OKS_THRE: 0.9
+  POST_PROCESS: True
+  SHIFT_HEATMAP: True
+  SOFT_NMS: False
+  USE_GT_BBOX: True
+TRAIN:
+  BATCH_SIZE_PER_GPU: 50
+  BEGIN_EPOCH: 0
+  CHECKPOINT: 
+  END_EPOCH: 400
+  GAMMA1: 0.99
+  GAMMA2: 0.0
+  LR: 0.001
+  LR_FACTOR: 0.1
+  LR_STEP: [360, 380, 400]
+  MOMENTUM: 0.9
+  NESTEROV: False
+  OPTIMIZER: adam
+  RESUME: False
+  SHUFFLE: True
+  WD: 0.0001
+WORKERS: 1
+2022-05-11 15:19:31,950 => init weights from normal distribution
+2022-05-11 15:19:31,981 => model init!
+2022-05-11 15:20:19,705 
+Total Parameters: 2,287,589
+----------------------------------------------------------------------------------------------------------------------------------
+Total Multiply Adds (For Convolution and Linear Layers only): 160.93063354492188 MFLOPs
+----------------------------------------------------------------------------------------------------------------------------------
+Number of Layers
+Conv2d : 109 layers   BatchNorm2d : 108 layers   ReLU6 : 35 layers   InvertedResidual : 34 layers   ReLU : 39 layers   Upsample : 9 layers   CoarseModule : 1 layers   RefineModule : 1 layers   CoarseRefineDecoder : 1 layers   
+2022-05-11 15:20:24,835 => classes: ['__background__', 'hand']
+2022-05-11 15:20:24,836 => num_images: 35645
+2022-05-11 15:20:29,569 => load 35638 samples
+2022-05-11 15:20:29,625 => classes: ['__background__', 'hand']
+2022-05-11 15:20:29,625 => num_images: 1486
+2022-05-11 15:20:29,824 => load 1485 samples
+2022-05-11 15:20:32,908 Epoch: [0][0/713]	 Time 3.079s (3.079s)	 Speed 16.2 samples/s	 Data 1.252s (1.252s)	 Loss 0.00148 (0.00148)	 Accuracy 0.000 (0.000)
+2022-05-11 15:22:16,463 Epoch: [0][100/713]	 Time 1.237s (1.056s)	 Speed 40.4 samples/s	 Data 1.133s (0.926s)	 Loss 0.00142 (0.00143)	 Accuracy 0.013 (0.008)
+2022-05-11 15:24:01,343 Epoch: [0][200/713]	 Time 1.153s (1.052s)	 Speed 43.4 samples/s	 Data 1.052s (0.933s)	 Loss 0.00141 (0.00141)	 Accuracy 0.014 (0.012)
+2022-05-11 15:26:05,655 Epoch: [0][300/713]	 Time 1.220s (1.116s)	 Speed 41.0 samples/s	 Data 1.114s (0.999s)	 Loss 0.00135 (0.00140)	 Accuracy 0.026 (0.015)
+2022-05-11 15:27:58,615 Epoch: [0][400/713]	 Time 0.890s (1.119s)	 Speed 56.2 samples/s	 Data 0.782s (1.004s)	 Loss 0.00137 (0.00139)	 Accuracy 0.025 (0.018)
+2022-05-11 15:29:51,810 Epoch: [0][500/713]	 Time 0.905s (1.122s)	 Speed 55.2 samples/s	 Data 0.802s (1.008s)	 Loss 0.00133 (0.00138)	 Accuracy 0.038 (0.021)
+2022-05-11 15:31:28,799 Epoch: [0][600/713]	 Time 0.906s (1.096s)	 Speed 55.2 samples/s	 Data 0.793s (0.983s)	 Loss 0.00130 (0.00137)	 Accuracy 0.048 (0.023)
+2022-05-11 15:33:13,730 Epoch: [0][700/713]	 Time 0.886s (1.090s)	 Speed 56.5 samples/s	 Data 0.784s (0.977s)	 Loss 0.00130 (0.00136)	 Accuracy 0.043 (0.025)

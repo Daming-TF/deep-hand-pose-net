@@ -1,0 +1,1040 @@
+2022-05-11 17:03:32,193 Namespace(cfg='/workspace/nas-data/deep-hand-pose-net/experiments/hand_coco/debug.yaml', opts=[])
+2022-05-11 17:03:32,194 AUTO_RESUME: True
+CUDNN:
+  BENCHMARK: True
+  DETERMINISTIC: False
+  ENABLED: True
+DATASET:
+  BLUR: True
+  COLOR: True
+  COLOR_RGB: True
+  DATASET: hand_coco
+  DATA_FORMAT: jpg
+  FLIP: True
+  GRAY: True
+  HYBRID_JOINTS_TYPE: 
+  NUM_JOINTS_HALF_BODY: 8
+  PROB_HALF_BODY: 0.0
+  ROOT: /workspace/cpfs-data/Data/debug
+  ROT_FACTOR: 20
+  SCALE_FACTOR: 0.1
+  SELECT_DATA: False
+  SHIFT: True
+  SHIFT_FACTOR: 0.05
+  TEST_SET: test2017
+  TRAIN_SET: train2017
+  VAL_SET: val2017
+DATA_DIR: 
+DEBUG:
+  DEBUG: False
+  SAVE_BATCH_IMAGES_GT: True
+  SAVE_BATCH_IMAGES_PRED: True
+  SAVE_HEATMAPS_GT: True
+  SAVE_HEATMAPS_PRED: True
+GPUS: (0, 1, 2, 3)
+LOG_DIR: log
+LOSS:
+  TOPK: 8
+  TYPE: heatmap
+  USE_DIFFERENT_JOINTS_WEIGHT: True
+  USE_OHKM: False
+  USE_TARGET_WEIGHT: True
+MODEL:
+  ALIGNMENT: False
+  EXTRA:
+    DECODER: CoarseRefineDecoder
+    NET_TYPE: v3
+    NUM_DECONV_FILTERS: 32
+  HEATMAP_SIZE: [40, 40]
+  IMAGE_SIZE: [160, 160]
+  INIT_WEIGHTS: True
+  MULTI_SUPERVISION: False
+  NAME: mobilenetv2
+  NUM_JOINTS: 21
+  PRETRAINED: 
+  REG_BRANCH: False
+  SIGMA: 1
+  TAG_PER_JOINT: True
+  TARGET_TYPE: gaussian
+OUTPUT_DIR: output
+PIN_MEMORY: True
+PRINT_FREQ: 100
+RANK: 0
+TEST:
+  BATCH_SIZE_PER_GPU: 512
+  BBOX_THRE: 1.0
+  COCO_BBOX_FILE: 
+  FLIP_TEST: False
+  IMAGE_THRE: 0.0
+  IN_VIS_THRE: 0.2
+  MODEL_FILE: mobilenetv2_160x160_alpha_140_coarserefine_data_v2_4
+  NMS_THRE: 1.0
+  OKS_THRE: 0.9
+  POST_PROCESS: True
+  SHIFT_HEATMAP: True
+  SOFT_NMS: False
+  USE_GT_BBOX: True
+TRAIN:
+  BATCH_SIZE_PER_GPU: 256
+  BEGIN_EPOCH: 0
+  CHECKPOINT: 
+  END_EPOCH: 400
+  GAMMA1: 0.99
+  GAMMA2: 0.0
+  LR: 0.001
+  LR_FACTOR: 0.1
+  LR_STEP: [360, 380, 400]
+  MOMENTUM: 0.9
+  NESTEROV: False
+  OPTIMIZER: adam
+  RESUME: False
+  SHUFFLE: True
+  WD: 0.0001
+WORKERS: 1
+2022-05-11 17:03:32,239 => init weights from normal distribution
+2022-05-11 17:03:32,262 => model init!
+2022-05-11 17:04:33,540 
+Total Parameters: 2,287,589
+----------------------------------------------------------------------------------------------------------------------------------
+Total Multiply Adds (For Convolution and Linear Layers only): 160.93063354492188 MFLOPs
+----------------------------------------------------------------------------------------------------------------------------------
+Number of Layers
+Conv2d : 109 layers   BatchNorm2d : 108 layers   ReLU6 : 35 layers   InvertedResidual : 34 layers   ReLU : 39 layers   Upsample : 9 layers   CoarseModule : 1 layers   RefineModule : 1 layers   CoarseRefineDecoder : 1 layers   
+2022-05-11 17:04:39,424 => classes: ['__background__', 'hand']
+2022-05-11 17:04:39,425 => num_images: 35645
+2022-05-11 17:04:43,881 => load 35638 samples
+2022-05-11 17:04:43,934 => classes: ['__background__', 'hand']
+2022-05-11 17:04:43,934 => num_images: 1486
+2022-05-11 17:04:44,111 => load 1485 samples
+2022-05-11 17:05:23,338 Epoch: [0][0/35]	 Time 39.222s (39.222s)	 Speed 26.1 samples/s	 Data 22.765s (22.765s)	 Loss 0.00148 (0.00148)	 Accuracy 0.000 (0.000)
+2022-05-11 17:17:44,417 Test: [0/1] - Loss: 0.0015 Accuracy: 0.001
+2022-05-11 17:17:44,819 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 17:17:46,339 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 17:17:46,339 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 17:17:46,339 | mobilenetv2 | 0.000 | 0.000 | 0.000 | 0.000 | 0.000 | 0.000 | 0.000 | 0.000 | 0.000 | 0.000 |
+2022-05-11 17:17:46,662 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 17:18:01,951 Epoch: [1][0/35]	 Time 15.118s (15.118s)	 Speed 67.7 samples/s	 Data 13.143s (13.143s)	 Loss 0.00142 (0.00142)	 Accuracy 0.010 (0.010)
+2022-05-11 17:25:10,987 Test: [0/1] - Loss: 0.0015 Accuracy: 0.003
+2022-05-11 17:25:11,345 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 17:25:12,822 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 17:25:12,822 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 17:25:12,822 | mobilenetv2 | 0.000 | 0.000 | 0.000 | 0.000 | 0.000 | 0.000 | 0.000 | 0.000 | 0.000 | 0.000 |
+2022-05-11 17:25:12,832 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 17:25:26,723 Epoch: [2][0/35]	 Time 13.747s (13.747s)	 Speed 74.5 samples/s	 Data 12.690s (12.690s)	 Loss 0.00138 (0.00138)	 Accuracy 0.018 (0.018)
+2022-05-11 17:32:31,209 Test: [0/1] - Loss: 0.0014 Accuracy: 0.023
+2022-05-11 17:32:31,597 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 17:32:33,095 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 17:32:33,096 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 17:32:33,096 | mobilenetv2 | 0.026 | 0.130 | 0.000 | 0.000 | 0.028 | 0.064 | 0.262 | 0.006 | 0.000 | 0.065 |
+2022-05-11 17:32:33,107 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 17:32:47,147 Epoch: [3][0/35]	 Time 13.796s (13.796s)	 Speed 74.2 samples/s	 Data 12.782s (12.782s)	 Loss 0.00137 (0.00137)	 Accuracy 0.022 (0.022)
+2022-05-11 17:39:57,701 Test: [0/1] - Loss: 0.0013 Accuracy: 0.043
+2022-05-11 17:39:58,030 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 17:39:59,694 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 17:39:59,694 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 17:39:59,694 | mobilenetv2 | 0.079 | 0.327 | 0.010 | 0.000 | 0.087 | 0.153 | 0.483 | 0.050 | 0.010 | 0.157 |
+2022-05-11 17:39:59,705 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 17:40:14,030 Epoch: [4][0/35]	 Time 14.103s (14.103s)	 Speed 72.6 samples/s	 Data 13.051s (13.051s)	 Loss 0.00130 (0.00130)	 Accuracy 0.038 (0.038)
+2022-05-11 17:47:24,959 Test: [0/1] - Loss: 0.0013 Accuracy: 0.044
+2022-05-11 17:47:25,323 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 17:47:26,892 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 17:47:26,892 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 17:47:26,893 | mobilenetv2 | 0.090 | 0.354 | 0.011 | 0.001 | 0.098 | 0.173 | 0.518 | 0.073 | 0.013 | 0.177 |
+2022-05-11 17:47:26,903 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 17:47:41,633 Epoch: [5][0/35]	 Time 14.501s (14.501s)	 Speed 70.6 samples/s	 Data 13.326s (13.326s)	 Loss 0.00128 (0.00128)	 Accuracy 0.046 (0.046)
+2022-05-11 17:54:46,370 Test: [0/1] - Loss: 0.0012 Accuracy: 0.059
+2022-05-11 17:54:46,729 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 17:54:48,243 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 17:54:48,243 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 17:54:48,244 | mobilenetv2 | 0.217 | 0.622 | 0.088 | 0.000 | 0.229 | 0.289 | 0.686 | 0.207 | 0.005 | 0.295 |
+2022-05-11 17:54:48,254 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 17:55:02,532 Epoch: [6][0/35]	 Time 14.047s (14.047s)	 Speed 72.9 samples/s	 Data 12.979s (12.979s)	 Loss 0.00124 (0.00124)	 Accuracy 0.053 (0.053)
+2022-05-11 18:02:07,890 Test: [0/1] - Loss: 0.0012 Accuracy: 0.068
+2022-05-11 18:02:08,273 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 18:02:09,905 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 18:02:09,905 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 18:02:09,905 | mobilenetv2 | 0.292 | 0.729 | 0.190 | 0.001 | 0.316 | 0.368 | 0.781 | 0.312 | 0.018 | 0.376 |
+2022-05-11 18:02:09,915 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 18:02:24,644 Epoch: [7][0/35]	 Time 14.500s (14.500s)	 Speed 70.6 samples/s	 Data 13.448s (13.448s)	 Loss 0.00120 (0.00120)	 Accuracy 0.065 (0.065)
+2022-05-11 18:09:34,012 Test: [0/1] - Loss: 0.0011 Accuracy: 0.082
+2022-05-11 18:09:34,504 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 18:09:36,007 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 18:09:36,007 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 18:09:36,008 | mobilenetv2 | 0.358 | 0.790 | 0.290 | 0.005 | 0.375 | 0.429 | 0.830 | 0.404 | 0.079 | 0.437 |
+2022-05-11 18:09:36,018 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 18:09:51,390 Epoch: [8][0/35]	 Time 15.144s (15.144s)	 Speed 67.6 samples/s	 Data 14.084s (14.084s)	 Loss 0.00116 (0.00116)	 Accuracy 0.074 (0.074)
+2022-05-11 18:17:01,540 Test: [0/1] - Loss: 0.0011 Accuracy: 0.098
+2022-05-11 18:17:01,969 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 18:17:03,486 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 18:17:03,487 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 18:17:03,487 | mobilenetv2 | 0.398 | 0.801 | 0.361 | 0.003 | 0.413 | 0.458 | 0.835 | 0.461 | 0.062 | 0.467 |
+2022-05-11 18:17:03,498 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 18:17:17,741 Epoch: [9][0/35]	 Time 14.028s (14.028s)	 Speed 73.0 samples/s	 Data 12.999s (12.999s)	 Loss 0.00114 (0.00114)	 Accuracy 0.082 (0.082)
+2022-05-11 18:24:28,081 Test: [0/1] - Loss: 0.0011 Accuracy: 0.101
+2022-05-11 18:24:28,459 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 18:24:30,073 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 18:24:30,073 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 18:24:30,073 | mobilenetv2 | 0.455 | 0.867 | 0.444 | 0.015 | 0.468 | 0.506 | 0.888 | 0.521 | 0.118 | 0.515 |
+2022-05-11 18:24:30,083 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 18:24:44,429 Epoch: [10][0/35]	 Time 14.115s (14.115s)	 Speed 72.5 samples/s	 Data 13.065s (13.065s)	 Loss 0.00111 (0.00111)	 Accuracy 0.088 (0.088)
+2022-05-11 18:32:00,047 Test: [0/1] - Loss: 0.0011 Accuracy: 0.106
+2022-05-11 18:32:00,434 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 18:32:01,975 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 18:32:01,976 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 18:32:01,976 | mobilenetv2 | 0.445 | 0.849 | 0.445 | 0.016 | 0.458 | 0.506 | 0.877 | 0.538 | 0.133 | 0.515 |
+2022-05-11 18:32:01,987 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 18:32:16,337 Epoch: [11][0/35]	 Time 14.184s (14.184s)	 Speed 72.2 samples/s	 Data 13.157s (13.157s)	 Loss 0.00110 (0.00110)	 Accuracy 0.093 (0.093)
+2022-05-11 18:39:45,269 Test: [0/1] - Loss: 0.0010 Accuracy: 0.125
+2022-05-11 18:39:45,678 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 18:39:47,226 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 18:39:47,226 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 18:39:47,226 | mobilenetv2 | 0.525 | 0.890 | 0.564 | 0.017 | 0.541 | 0.571 | 0.902 | 0.627 | 0.110 | 0.582 |
+2022-05-11 18:39:47,244 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 18:40:01,635 Epoch: [12][0/35]	 Time 14.166s (14.166s)	 Speed 72.3 samples/s	 Data 13.024s (13.024s)	 Loss 0.00106 (0.00106)	 Accuracy 0.107 (0.107)
+2022-05-11 18:47:23,342 Test: [0/1] - Loss: 0.0011 Accuracy: 0.093
+2022-05-11 18:47:23,733 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 18:47:25,254 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 18:47:25,255 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 18:47:25,255 | mobilenetv2 | 0.454 | 0.896 | 0.392 | 0.054 | 0.463 | 0.516 | 0.915 | 0.513 | 0.177 | 0.523 |
+2022-05-11 18:47:25,266 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 18:47:39,566 Epoch: [13][0/35]	 Time 14.148s (14.148s)	 Speed 72.4 samples/s	 Data 13.129s (13.129s)	 Loss 0.00108 (0.00108)	 Accuracy 0.092 (0.092)
+2022-05-11 18:54:49,259 Test: [0/1] - Loss: 0.0010 Accuracy: 0.132
+2022-05-11 18:54:49,745 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 18:54:51,285 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 18:54:51,285 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 18:54:51,285 | mobilenetv2 | 0.551 | 0.918 | 0.590 | 0.072 | 0.565 | 0.602 | 0.933 | 0.653 | 0.221 | 0.611 |
+2022-05-11 18:54:51,297 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 18:55:05,634 Epoch: [14][0/35]	 Time 14.088s (14.088s)	 Speed 72.7 samples/s	 Data 13.068s (13.068s)	 Loss 0.00103 (0.00103)	 Accuracy 0.119 (0.119)
+2022-05-11 19:02:25,928 Test: [0/1] - Loss: 0.0010 Accuracy: 0.131
+2022-05-11 19:02:26,384 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 19:02:28,071 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 19:02:28,072 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 19:02:28,072 | mobilenetv2 | 0.566 | 0.921 | 0.626 | 0.045 | 0.580 | 0.618 | 0.934 | 0.684 | 0.208 | 0.628 |
+2022-05-11 19:02:28,082 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 19:02:42,726 Epoch: [15][0/35]	 Time 14.403s (14.403s)	 Speed 71.1 samples/s	 Data 13.391s (13.391s)	 Loss 0.00100 (0.00100)	 Accuracy 0.119 (0.119)
+2022-05-11 19:09:58,279 Test: [0/1] - Loss: 0.0010 Accuracy: 0.139
+2022-05-11 19:09:58,671 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 19:10:00,374 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 19:10:00,374 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 19:10:00,374 | mobilenetv2 | 0.582 | 0.924 | 0.640 | 0.073 | 0.593 | 0.622 | 0.939 | 0.689 | 0.267 | 0.630 |
+2022-05-11 19:10:00,394 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 19:10:15,401 Epoch: [16][0/35]	 Time 14.744s (14.744s)	 Speed 69.5 samples/s	 Data 13.708s (13.708s)	 Loss 0.00100 (0.00100)	 Accuracy 0.126 (0.126)
+2022-05-11 19:17:32,845 Test: [0/1] - Loss: 0.0009 Accuracy: 0.139
+2022-05-11 19:17:33,250 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 19:17:34,896 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 19:17:34,896 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 19:17:34,896 | mobilenetv2 | 0.596 | 0.947 | 0.663 | 0.121 | 0.606 | 0.641 | 0.960 | 0.711 | 0.315 | 0.648 |
+2022-05-11 19:17:34,907 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 19:17:49,815 Epoch: [17][0/35]	 Time 14.687s (14.687s)	 Speed 69.7 samples/s	 Data 13.574s (13.574s)	 Loss 0.00098 (0.00098)	 Accuracy 0.131 (0.131)
+2022-05-11 19:25:06,103 Test: [0/1] - Loss: 0.0009 Accuracy: 0.154
+2022-05-11 19:25:06,560 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 19:25:08,061 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 19:25:08,061 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 19:25:08,062 | mobilenetv2 | 0.651 | 0.959 | 0.763 | 0.187 | 0.661 | 0.688 | 0.969 | 0.790 | 0.295 | 0.698 |
+2022-05-11 19:25:08,075 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 19:25:22,785 Epoch: [18][0/35]	 Time 14.347s (14.347s)	 Speed 71.4 samples/s	 Data 13.279s (13.279s)	 Loss 0.00096 (0.00096)	 Accuracy 0.139 (0.139)
+2022-05-11 19:32:37,284 Test: [0/1] - Loss: 0.0009 Accuracy: 0.155
+2022-05-11 19:32:37,678 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 19:32:39,226 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 19:32:39,227 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 19:32:39,227 | mobilenetv2 | 0.647 | 0.968 | 0.743 | 0.210 | 0.655 | 0.689 | 0.974 | 0.785 | 0.372 | 0.697 |
+2022-05-11 19:32:39,240 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 19:32:53,670 Epoch: [19][0/35]	 Time 14.282s (14.282s)	 Speed 71.7 samples/s	 Data 13.221s (13.221s)	 Loss 0.00095 (0.00095)	 Accuracy 0.139 (0.139)
+2022-05-11 19:40:07,179 Test: [0/1] - Loss: 0.0009 Accuracy: 0.176
+2022-05-11 19:40:07,632 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 19:40:09,353 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 19:40:09,353 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 19:40:09,353 | mobilenetv2 | 0.687 | 0.968 | 0.797 | 0.175 | 0.696 | 0.721 | 0.974 | 0.828 | 0.362 | 0.729 |
+2022-05-11 19:40:09,363 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 19:40:23,716 Epoch: [20][0/35]	 Time 14.114s (14.114s)	 Speed 72.5 samples/s	 Data 13.065s (13.065s)	 Loss 0.00092 (0.00092)	 Accuracy 0.153 (0.153)
+2022-05-11 19:47:31,699 Test: [0/1] - Loss: 0.0009 Accuracy: 0.181
+2022-05-11 19:47:32,041 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 19:47:33,561 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 19:47:33,561 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 19:47:33,561 | mobilenetv2 | 0.689 | 0.969 | 0.799 | 0.226 | 0.699 | 0.725 | 0.978 | 0.825 | 0.351 | 0.734 |
+2022-05-11 19:47:33,573 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 19:47:47,794 Epoch: [21][0/35]	 Time 14.005s (14.005s)	 Speed 73.1 samples/s	 Data 12.982s (12.982s)	 Loss 0.00092 (0.00092)	 Accuracy 0.152 (0.152)
+2022-05-11 19:54:52,674 Test: [0/1] - Loss: 0.0008 Accuracy: 0.195
+2022-05-11 19:54:53,241 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 19:54:54,758 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 19:54:54,759 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 19:54:54,759 | mobilenetv2 | 0.710 | 0.968 | 0.808 | 0.172 | 0.718 | 0.744 | 0.972 | 0.832 | 0.359 | 0.754 |
+2022-05-11 19:54:54,769 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 19:55:09,192 Epoch: [22][0/35]	 Time 14.195s (14.195s)	 Speed 72.1 samples/s	 Data 13.160s (13.160s)	 Loss 0.00091 (0.00091)	 Accuracy 0.151 (0.151)
+2022-05-11 20:02:22,576 Test: [0/1] - Loss: 0.0009 Accuracy: 0.162
+2022-05-11 20:02:22,959 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 20:02:24,686 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 20:02:24,686 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 20:02:24,686 | mobilenetv2 | 0.692 | 0.976 | 0.797 | 0.264 | 0.701 | 0.728 | 0.981 | 0.828 | 0.400 | 0.736 |
+2022-05-11 20:02:24,697 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 20:02:38,900 Epoch: [23][0/35]	 Time 14.057s (14.057s)	 Speed 72.8 samples/s	 Data 13.048s (13.048s)	 Loss 0.00091 (0.00091)	 Accuracy 0.146 (0.146)
+2022-05-11 20:09:56,376 Test: [0/1] - Loss: 0.0008 Accuracy: 0.178
+2022-05-11 20:09:56,823 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 20:09:58,471 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 20:09:58,473 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 20:09:58,473 | mobilenetv2 | 0.701 | 0.978 | 0.819 | 0.287 | 0.707 | 0.740 | 0.981 | 0.847 | 0.431 | 0.747 |
+2022-05-11 20:09:58,500 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 20:10:12,968 Epoch: [24][0/35]	 Time 14.281s (14.281s)	 Speed 71.7 samples/s	 Data 13.241s (13.241s)	 Loss 0.00090 (0.00090)	 Accuracy 0.154 (0.154)
+2022-05-11 20:17:20,711 Test: [0/1] - Loss: 0.0009 Accuracy: 0.165
+2022-05-11 20:17:21,099 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 20:17:22,634 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 20:17:22,634 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 20:17:22,634 | mobilenetv2 | 0.685 | 0.968 | 0.799 | 0.195 | 0.697 | 0.721 | 0.978 | 0.829 | 0.364 | 0.729 |
+2022-05-11 20:17:22,647 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 20:17:36,854 Epoch: [25][0/35]	 Time 14.058s (14.058s)	 Speed 72.8 samples/s	 Data 12.997s (12.997s)	 Loss 0.00091 (0.00091)	 Accuracy 0.146 (0.146)
+2022-05-11 20:24:55,987 Test: [0/1] - Loss: 0.0008 Accuracy: 0.209
+2022-05-11 20:24:56,421 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 20:24:58,060 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 20:24:58,061 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 20:24:58,061 | mobilenetv2 | 0.744 | 0.979 | 0.858 | 0.310 | 0.752 | 0.777 | 0.985 | 0.879 | 0.449 | 0.784 |
+2022-05-11 20:24:58,074 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 20:25:12,646 Epoch: [26][0/35]	 Time 14.330s (14.330s)	 Speed 71.5 samples/s	 Data 13.317s (13.317s)	 Loss 0.00085 (0.00085)	 Accuracy 0.182 (0.182)
+2022-05-11 20:32:32,018 Test: [0/1] - Loss: 0.0008 Accuracy: 0.216
+2022-05-11 20:32:32,414 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 20:32:34,101 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 20:32:34,102 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 20:32:34,102 | mobilenetv2 | 0.761 | 0.979 | 0.877 | 0.326 | 0.771 | 0.792 | 0.988 | 0.892 | 0.472 | 0.800 |
+2022-05-11 20:32:34,113 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 20:32:48,478 Epoch: [27][0/35]	 Time 14.135s (14.135s)	 Speed 72.4 samples/s	 Data 13.105s (13.105s)	 Loss 0.00085 (0.00085)	 Accuracy 0.181 (0.181)
+2022-05-11 20:40:04,824 Test: [0/1] - Loss: 0.0008 Accuracy: 0.227
+2022-05-11 20:40:05,223 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 20:40:06,974 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 20:40:06,974 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 20:40:06,974 | mobilenetv2 | 0.773 | 0.979 | 0.883 | 0.358 | 0.781 | 0.799 | 0.985 | 0.896 | 0.472 | 0.807 |
+2022-05-11 20:40:06,985 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 20:40:21,611 Epoch: [28][0/35]	 Time 14.381s (14.381s)	 Speed 71.2 samples/s	 Data 13.336s (13.336s)	 Loss 0.00085 (0.00085)	 Accuracy 0.187 (0.187)
+2022-05-11 20:47:35,830 Test: [0/1] - Loss: 0.0008 Accuracy: 0.203
+2022-05-11 20:47:36,215 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 20:47:37,753 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 20:47:37,753 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 20:47:37,753 | mobilenetv2 | 0.748 | 0.979 | 0.858 | 0.293 | 0.756 | 0.778 | 0.987 | 0.877 | 0.441 | 0.785 |
+2022-05-11 20:47:37,764 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 20:47:52,261 Epoch: [29][0/35]	 Time 14.347s (14.347s)	 Speed 71.4 samples/s	 Data 13.313s (13.313s)	 Loss 0.00085 (0.00085)	 Accuracy 0.182 (0.182)
+2022-05-11 20:55:10,673 Test: [0/1] - Loss: 0.0008 Accuracy: 0.217
+2022-05-11 20:55:11,076 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 20:55:12,747 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 20:55:12,748 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 20:55:12,748 | mobilenetv2 | 0.769 | 0.979 | 0.890 | 0.351 | 0.777 | 0.800 | 0.989 | 0.904 | 0.503 | 0.807 |
+2022-05-11 20:55:12,762 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 20:55:27,323 Epoch: [30][0/35]	 Time 14.420s (14.420s)	 Speed 71.0 samples/s	 Data 13.386s (13.386s)	 Loss 0.00082 (0.00082)	 Accuracy 0.194 (0.194)
+2022-05-11 21:02:46,765 Test: [0/1] - Loss: 0.0008 Accuracy: 0.211
+2022-05-11 21:02:47,165 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 21:02:48,730 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 21:02:48,731 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 21:02:48,731 | mobilenetv2 | 0.759 | 0.979 | 0.866 | 0.317 | 0.767 | 0.789 | 0.987 | 0.884 | 0.490 | 0.796 |
+2022-05-11 21:02:48,746 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 21:03:03,048 Epoch: [31][0/35]	 Time 13.950s (13.950s)	 Speed 73.4 samples/s	 Data 12.914s (12.914s)	 Loss 0.00085 (0.00085)	 Accuracy 0.181 (0.181)
+2022-05-11 21:10:21,478 Test: [0/1] - Loss: 0.0008 Accuracy: 0.225
+2022-05-11 21:10:21,865 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 21:10:23,525 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 21:10:23,525 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 21:10:23,525 | mobilenetv2 | 0.767 | 0.979 | 0.880 | 0.332 | 0.773 | 0.795 | 0.986 | 0.895 | 0.474 | 0.803 |
+2022-05-11 21:10:23,536 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 21:10:37,641 Epoch: [32][0/35]	 Time 13.947s (13.947s)	 Speed 73.4 samples/s	 Data 12.897s (12.897s)	 Loss 0.00081 (0.00081)	 Accuracy 0.198 (0.198)
+2022-05-11 21:17:50,524 Test: [0/1] - Loss: 0.0007 Accuracy: 0.229
+2022-05-11 21:17:50,929 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 21:17:52,668 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 21:17:52,668 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 21:17:52,669 | mobilenetv2 | 0.779 | 0.980 | 0.891 | 0.356 | 0.787 | 0.807 | 0.989 | 0.904 | 0.487 | 0.814 |
+2022-05-11 21:17:52,682 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 21:18:06,868 Epoch: [33][0/35]	 Time 13.941s (13.941s)	 Speed 73.5 samples/s	 Data 12.895s (12.895s)	 Loss 0.00082 (0.00082)	 Accuracy 0.194 (0.194)
+2022-05-11 21:25:22,774 Test: [0/1] - Loss: 0.0007 Accuracy: 0.243
+2022-05-11 21:25:23,140 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 21:25:24,672 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 21:25:24,673 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 21:25:24,673 | mobilenetv2 | 0.792 | 0.980 | 0.902 | 0.377 | 0.799 | 0.821 | 0.989 | 0.915 | 0.521 | 0.828 |
+2022-05-11 21:25:24,685 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 21:25:38,721 Epoch: [34][0/35]	 Time 13.807s (13.807s)	 Speed 74.2 samples/s	 Data 12.785s (12.785s)	 Loss 0.00080 (0.00080)	 Accuracy 0.203 (0.203)
+2022-05-11 21:32:54,854 Test: [0/1] - Loss: 0.0007 Accuracy: 0.242
+2022-05-11 21:32:55,259 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 21:32:56,828 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 21:32:56,829 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 21:32:56,830 | mobilenetv2 | 0.802 | 0.989 | 0.901 | 0.411 | 0.810 | 0.829 | 0.991 | 0.918 | 0.528 | 0.836 |
+2022-05-11 21:32:56,849 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 21:33:11,384 Epoch: [35][0/35]	 Time 14.079s (14.079s)	 Speed 72.7 samples/s	 Data 13.014s (13.014s)	 Loss 0.00081 (0.00081)	 Accuracy 0.197 (0.197)
+2022-05-11 21:40:19,934 Test: [0/1] - Loss: 0.0007 Accuracy: 0.216
+2022-05-11 21:40:20,323 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 21:40:21,852 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 21:40:21,853 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 21:40:21,853 | mobilenetv2 | 0.778 | 0.979 | 0.892 | 0.345 | 0.786 | 0.806 | 0.989 | 0.905 | 0.531 | 0.812 |
+2022-05-11 21:40:21,866 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 21:40:36,561 Epoch: [36][0/35]	 Time 14.551s (14.551s)	 Speed 70.4 samples/s	 Data 13.520s (13.520s)	 Loss 0.00081 (0.00081)	 Accuracy 0.196 (0.196)
+2022-05-11 21:47:47,599 Test: [0/1] - Loss: 0.0007 Accuracy: 0.238
+2022-05-11 21:47:47,992 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 21:47:49,557 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 21:47:49,558 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 21:47:49,558 | mobilenetv2 | 0.794 | 0.979 | 0.901 | 0.411 | 0.804 | 0.823 | 0.989 | 0.919 | 0.528 | 0.830 |
+2022-05-11 21:47:49,569 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 21:48:04,011 Epoch: [37][0/35]	 Time 14.303s (14.303s)	 Speed 71.6 samples/s	 Data 13.226s (13.226s)	 Loss 0.00078 (0.00078)	 Accuracy 0.209 (0.209)
+2022-05-11 21:55:17,513 Test: [0/1] - Loss: 0.0007 Accuracy: 0.243
+2022-05-11 21:55:18,055 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 21:55:19,599 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 21:55:19,600 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 21:55:19,600 | mobilenetv2 | 0.803 | 0.978 | 0.903 | 0.396 | 0.812 | 0.831 | 0.990 | 0.919 | 0.544 | 0.838 |
+2022-05-11 21:55:19,611 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 21:55:33,578 Epoch: [38][0/35]	 Time 13.722s (13.722s)	 Speed 74.6 samples/s	 Data 12.702s (12.702s)	 Loss 0.00079 (0.00079)	 Accuracy 0.197 (0.197)
+2022-05-11 22:02:49,386 Test: [0/1] - Loss: 0.0007 Accuracy: 0.235
+2022-05-11 22:02:49,781 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 22:02:51,475 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 22:02:51,476 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 22:02:51,476 | mobilenetv2 | 0.797 | 0.979 | 0.910 | 0.426 | 0.803 | 0.825 | 0.990 | 0.923 | 0.536 | 0.831 |
+2022-05-11 22:02:51,487 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 22:03:05,849 Epoch: [39][0/35]	 Time 14.214s (14.214s)	 Speed 72.0 samples/s	 Data 13.171s (13.171s)	 Loss 0.00079 (0.00079)	 Accuracy 0.199 (0.199)
+2022-05-11 22:10:20,505 Test: [0/1] - Loss: 0.0007 Accuracy: 0.260
+2022-05-11 22:10:20,902 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 22:10:22,474 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 22:10:22,475 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 22:10:22,475 | mobilenetv2 | 0.817 | 0.989 | 0.910 | 0.426 | 0.824 | 0.842 | 0.991 | 0.925 | 0.538 | 0.849 |
+2022-05-11 22:10:22,490 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 22:10:37,052 Epoch: [40][0/35]	 Time 14.299s (14.299s)	 Speed 71.6 samples/s	 Data 13.190s (13.190s)	 Loss 0.00076 (0.00076)	 Accuracy 0.216 (0.216)
+2022-05-11 22:17:52,328 Test: [0/1] - Loss: 0.0007 Accuracy: 0.235
+2022-05-11 22:17:52,710 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 22:17:54,377 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 22:17:54,377 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 22:17:54,377 | mobilenetv2 | 0.797 | 0.980 | 0.911 | 0.419 | 0.802 | 0.827 | 0.990 | 0.923 | 0.572 | 0.832 |
+2022-05-11 22:17:54,388 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 22:18:08,909 Epoch: [41][0/35]	 Time 14.372s (14.372s)	 Speed 71.2 samples/s	 Data 13.347s (13.347s)	 Loss 0.00079 (0.00079)	 Accuracy 0.197 (0.197)
+2022-05-11 22:25:21,480 Test: [0/1] - Loss: 0.0007 Accuracy: 0.251
+2022-05-11 22:25:21,889 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 22:25:23,439 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 22:25:23,440 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 22:25:23,440 | mobilenetv2 | 0.817 | 0.978 | 0.922 | 0.446 | 0.827 | 0.844 | 0.990 | 0.931 | 0.556 | 0.850 |
+2022-05-11 22:25:23,455 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 22:25:37,810 Epoch: [42][0/35]	 Time 14.209s (14.209s)	 Speed 72.1 samples/s	 Data 13.109s (13.109s)	 Loss 0.00075 (0.00075)	 Accuracy 0.218 (0.218)
+2022-05-11 22:32:49,946 Test: [0/1] - Loss: 0.0007 Accuracy: 0.256
+2022-05-11 22:32:50,468 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 22:32:51,986 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 22:32:51,986 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 22:32:51,986 | mobilenetv2 | 0.823 | 0.990 | 0.922 | 0.435 | 0.828 | 0.847 | 0.991 | 0.934 | 0.544 | 0.854 |
+2022-05-11 22:32:51,997 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 22:33:06,249 Epoch: [43][0/35]	 Time 14.026s (14.026s)	 Speed 73.0 samples/s	 Data 12.999s (12.999s)	 Loss 0.00075 (0.00075)	 Accuracy 0.223 (0.223)
+2022-05-11 22:40:21,287 Test: [0/1] - Loss: 0.0007 Accuracy: 0.269
+2022-05-11 22:40:21,687 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 22:40:23,278 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 22:40:23,278 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 22:40:23,278 | mobilenetv2 | 0.830 | 0.989 | 0.923 | 0.457 | 0.837 | 0.853 | 0.991 | 0.935 | 0.577 | 0.859 |
+2022-05-11 22:40:23,292 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 22:40:37,345 Epoch: [44][0/35]	 Time 13.802s (13.802s)	 Speed 74.2 samples/s	 Data 12.740s (12.740s)	 Loss 0.00075 (0.00075)	 Accuracy 0.229 (0.229)
+2022-05-11 22:47:54,371 Test: [0/1] - Loss: 0.0007 Accuracy: 0.276
+2022-05-11 22:47:54,775 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 22:47:56,322 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 22:47:56,322 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 22:47:56,322 | mobilenetv2 | 0.831 | 0.988 | 0.922 | 0.445 | 0.839 | 0.857 | 0.991 | 0.935 | 0.574 | 0.863 |
+2022-05-11 22:47:56,333 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 22:48:10,483 Epoch: [45][0/35]	 Time 13.904s (13.904s)	 Speed 73.6 samples/s	 Data 12.869s (12.869s)	 Loss 0.00074 (0.00074)	 Accuracy 0.228 (0.228)
+2022-05-11 22:55:27,437 Test: [0/1] - Loss: 0.0007 Accuracy: 0.271
+2022-05-11 22:55:27,917 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 22:55:29,561 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 22:55:29,562 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 22:55:29,562 | mobilenetv2 | 0.828 | 0.989 | 0.921 | 0.453 | 0.837 | 0.854 | 0.991 | 0.936 | 0.556 | 0.861 |
+2022-05-11 22:55:29,572 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 22:55:43,860 Epoch: [46][0/35]	 Time 14.146s (14.146s)	 Speed 72.4 samples/s	 Data 13.118s (13.118s)	 Loss 0.00075 (0.00075)	 Accuracy 0.221 (0.221)
+2022-05-11 23:02:53,050 Test: [0/1] - Loss: 0.0007 Accuracy: 0.268
+2022-05-11 23:02:53,418 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 23:02:55,132 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 23:02:55,133 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 23:02:55,133 | mobilenetv2 | 0.835 | 0.989 | 0.924 | 0.437 | 0.843 | 0.858 | 0.991 | 0.935 | 0.562 | 0.865 |
+2022-05-11 23:02:55,144 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 23:03:09,017 Epoch: [47][0/35]	 Time 13.625s (13.625s)	 Speed 75.2 samples/s	 Data 12.613s (12.613s)	 Loss 0.00072 (0.00072)	 Accuracy 0.236 (0.236)
+2022-05-11 23:10:25,582 Test: [0/1] - Loss: 0.0007 Accuracy: 0.246
+2022-05-11 23:10:25,973 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 23:10:27,611 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 23:10:27,611 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 23:10:27,611 | mobilenetv2 | 0.820 | 0.989 | 0.911 | 0.421 | 0.827 | 0.845 | 0.991 | 0.928 | 0.577 | 0.851 |
+2022-05-11 23:10:27,622 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 23:10:41,582 Epoch: [48][0/35]	 Time 13.818s (13.818s)	 Speed 74.1 samples/s	 Data 12.779s (12.779s)	 Loss 0.00074 (0.00074)	 Accuracy 0.220 (0.220)
+2022-05-11 23:17:58,396 Test: [0/1] - Loss: 0.0006 Accuracy: 0.286
+2022-05-11 23:17:58,771 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 23:18:00,450 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 23:18:00,450 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 23:18:00,450 | mobilenetv2 | 0.845 | 0.990 | 0.935 | 0.469 | 0.852 | 0.866 | 0.992 | 0.942 | 0.608 | 0.872 |
+2022-05-11 23:18:00,464 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 23:18:14,812 Epoch: [49][0/35]	 Time 14.101s (14.101s)	 Speed 72.6 samples/s	 Data 13.052s (13.052s)	 Loss 0.00072 (0.00072)	 Accuracy 0.242 (0.242)
+2022-05-11 23:25:25,957 Test: [0/1] - Loss: 0.0007 Accuracy: 0.273
+2022-05-11 23:25:26,359 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 23:25:27,878 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 23:25:27,878 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 23:25:27,878 | mobilenetv2 | 0.833 | 0.989 | 0.933 | 0.448 | 0.840 | 0.858 | 0.992 | 0.942 | 0.569 | 0.865 |
+2022-05-11 23:25:27,889 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 23:25:42,420 Epoch: [50][0/35]	 Time 14.392s (14.392s)	 Speed 71.2 samples/s	 Data 13.363s (13.363s)	 Loss 0.00073 (0.00073)	 Accuracy 0.238 (0.238)
+2022-05-11 23:32:57,783 Test: [0/1] - Loss: 0.0006 Accuracy: 0.279
+2022-05-11 23:32:58,256 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 23:32:59,913 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 23:32:59,913 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 23:32:59,913 | mobilenetv2 | 0.846 | 0.988 | 0.930 | 0.485 | 0.853 | 0.869 | 0.991 | 0.945 | 0.592 | 0.876 |
+2022-05-11 23:32:59,924 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 23:33:14,229 Epoch: [51][0/35]	 Time 14.064s (14.064s)	 Speed 72.8 samples/s	 Data 13.033s (13.033s)	 Loss 0.00072 (0.00072)	 Accuracy 0.242 (0.242)
+2022-05-11 23:40:29,066 Test: [0/1] - Loss: 0.0007 Accuracy: 0.258
+2022-05-11 23:40:29,509 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 23:40:31,168 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 23:40:31,168 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 23:40:31,169 | mobilenetv2 | 0.830 | 0.989 | 0.922 | 0.498 | 0.837 | 0.858 | 0.991 | 0.938 | 0.597 | 0.864 |
+2022-05-11 23:40:31,179 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 23:40:45,789 Epoch: [52][0/35]	 Time 14.469s (14.469s)	 Speed 70.8 samples/s	 Data 13.377s (13.377s)	 Loss 0.00073 (0.00073)	 Accuracy 0.223 (0.223)
+2022-05-11 23:47:50,601 Test: [0/1] - Loss: 0.0006 Accuracy: 0.276
+2022-05-11 23:47:50,989 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 23:47:52,698 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 23:47:52,698 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 23:47:52,698 | mobilenetv2 | 0.839 | 0.988 | 0.923 | 0.439 | 0.849 | 0.864 | 0.992 | 0.938 | 0.559 | 0.871 |
+2022-05-11 23:47:52,709 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 23:48:06,561 Epoch: [53][0/35]	 Time 13.709s (13.709s)	 Speed 74.7 samples/s	 Data 12.692s (12.692s)	 Loss 0.00070 (0.00070)	 Accuracy 0.248 (0.248)
+2022-05-11 23:55:13,410 Test: [0/1] - Loss: 0.0006 Accuracy: 0.271
+2022-05-11 23:55:13,795 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-11 23:55:15,329 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-11 23:55:15,330 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-11 23:55:15,330 | mobilenetv2 | 0.843 | 0.990 | 0.924 | 0.459 | 0.851 | 0.868 | 0.993 | 0.939 | 0.595 | 0.874 |
+2022-05-11 23:55:15,342 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-11 23:55:29,032 Epoch: [54][0/35]	 Time 13.545s (13.545s)	 Speed 75.6 samples/s	 Data 12.488s (12.488s)	 Loss 0.00072 (0.00072)	 Accuracy 0.231 (0.231)
+2022-05-12 00:02:40,563 Test: [0/1] - Loss: 0.0006 Accuracy: 0.283
+2022-05-12 00:02:40,956 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 00:02:42,492 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 00:02:42,492 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 00:02:42,492 | mobilenetv2 | 0.845 | 0.989 | 0.933 | 0.502 | 0.850 | 0.867 | 0.993 | 0.942 | 0.608 | 0.873 |
+2022-05-12 00:02:42,503 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 00:02:57,184 Epoch: [55][0/35]	 Time 14.540s (14.540s)	 Speed 70.4 samples/s	 Data 13.495s (13.495s)	 Loss 0.00070 (0.00070)	 Accuracy 0.245 (0.245)
+2022-05-12 00:10:10,204 Test: [0/1] - Loss: 0.0006 Accuracy: 0.295
+2022-05-12 00:10:10,562 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 00:10:12,220 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 00:10:12,220 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 00:10:12,220 | mobilenetv2 | 0.855 | 0.988 | 0.933 | 0.496 | 0.863 | 0.878 | 0.992 | 0.948 | 0.600 | 0.884 |
+2022-05-12 00:10:12,231 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 00:10:26,457 Epoch: [56][0/35]	 Time 13.999s (13.999s)	 Speed 73.1 samples/s	 Data 12.884s (12.884s)	 Loss 0.00069 (0.00069)	 Accuracy 0.252 (0.252)
+2022-05-12 00:17:40,450 Test: [0/1] - Loss: 0.0006 Accuracy: 0.271
+2022-05-12 00:17:40,831 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 00:17:42,514 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 00:17:42,515 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 00:17:42,515 | mobilenetv2 | 0.843 | 0.989 | 0.932 | 0.490 | 0.850 | 0.869 | 0.993 | 0.945 | 0.595 | 0.875 |
+2022-05-12 00:17:42,525 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 00:17:57,160 Epoch: [57][0/35]	 Time 14.495s (14.495s)	 Speed 70.6 samples/s	 Data 13.458s (13.458s)	 Loss 0.00071 (0.00071)	 Accuracy 0.239 (0.239)
+2022-05-12 00:25:03,484 Test: [0/1] - Loss: 0.0006 Accuracy: 0.295
+2022-05-12 00:25:03,869 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 00:25:05,408 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 00:25:05,408 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 00:25:05,408 | mobilenetv2 | 0.859 | 0.989 | 0.943 | 0.504 | 0.865 | 0.879 | 0.993 | 0.952 | 0.623 | 0.885 |
+2022-05-12 00:25:05,419 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 00:25:19,764 Epoch: [58][0/35]	 Time 14.099s (14.099s)	 Speed 72.6 samples/s	 Data 12.942s (12.942s)	 Loss 0.00070 (0.00070)	 Accuracy 0.251 (0.251)
+2022-05-12 00:32:35,607 Test: [0/1] - Loss: 0.0006 Accuracy: 0.302
+2022-05-12 00:32:35,966 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 00:32:37,505 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 00:32:37,505 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 00:32:37,505 | mobilenetv2 | 0.863 | 0.988 | 0.944 | 0.514 | 0.869 | 0.885 | 0.993 | 0.951 | 0.628 | 0.891 |
+2022-05-12 00:32:37,518 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 00:32:52,389 Epoch: [59][0/35]	 Time 14.637s (14.637s)	 Speed 70.0 samples/s	 Data 13.530s (13.530s)	 Loss 0.00068 (0.00068)	 Accuracy 0.256 (0.256)
+2022-05-12 00:40:11,665 Test: [0/1] - Loss: 0.0006 Accuracy: 0.305
+2022-05-12 00:40:12,050 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 00:40:13,737 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 00:40:13,737 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 00:40:13,737 | mobilenetv2 | 0.862 | 0.989 | 0.936 | 0.496 | 0.869 | 0.883 | 0.993 | 0.950 | 0.626 | 0.889 |
+2022-05-12 00:40:13,748 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 00:40:28,031 Epoch: [60][0/35]	 Time 14.140s (14.140s)	 Speed 72.4 samples/s	 Data 13.084s (13.084s)	 Loss 0.00067 (0.00067)	 Accuracy 0.262 (0.262)
+2022-05-12 00:47:43,053 Test: [0/1] - Loss: 0.0006 Accuracy: 0.314
+2022-05-12 00:47:43,463 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 00:47:45,040 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 00:47:45,041 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 00:47:45,041 | mobilenetv2 | 0.869 | 0.989 | 0.945 | 0.534 | 0.875 | 0.890 | 0.994 | 0.956 | 0.649 | 0.896 |
+2022-05-12 00:47:45,053 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 00:47:59,701 Epoch: [61][0/35]	 Time 14.218s (14.218s)	 Speed 72.0 samples/s	 Data 13.136s (13.136s)	 Loss 0.00068 (0.00068)	 Accuracy 0.262 (0.262)
+2022-05-12 00:55:15,635 Test: [0/1] - Loss: 0.0006 Accuracy: 0.301
+2022-05-12 00:55:16,050 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 00:55:17,629 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 00:55:17,629 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 00:55:17,630 | mobilenetv2 | 0.860 | 0.989 | 0.933 | 0.495 | 0.869 | 0.882 | 0.992 | 0.949 | 0.615 | 0.888 |
+2022-05-12 00:55:17,644 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 00:55:31,291 Epoch: [62][0/35]	 Time 13.503s (13.503s)	 Speed 75.8 samples/s	 Data 12.430s (12.430s)	 Loss 0.00069 (0.00069)	 Accuracy 0.256 (0.256)
+2022-05-12 01:02:49,570 Test: [0/1] - Loss: 0.0006 Accuracy: 0.273
+2022-05-12 01:02:49,986 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 01:02:51,707 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 01:02:51,708 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 01:02:51,708 | mobilenetv2 | 0.850 | 0.988 | 0.933 | 0.501 | 0.858 | 0.875 | 0.993 | 0.948 | 0.631 | 0.881 |
+2022-05-12 01:02:51,718 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 01:03:06,395 Epoch: [63][0/35]	 Time 14.536s (14.536s)	 Speed 70.4 samples/s	 Data 13.478s (13.478s)	 Loss 0.00067 (0.00067)	 Accuracy 0.260 (0.260)
+2022-05-12 01:10:25,682 Test: [0/1] - Loss: 0.0006 Accuracy: 0.290
+2022-05-12 01:10:26,085 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 01:10:27,808 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 01:10:27,808 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 01:10:27,809 | mobilenetv2 | 0.861 | 0.989 | 0.944 | 0.521 | 0.866 | 0.884 | 0.995 | 0.951 | 0.628 | 0.890 |
+2022-05-12 01:10:27,821 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 01:10:42,687 Epoch: [64][0/35]	 Time 14.720s (14.720s)	 Speed 69.6 samples/s	 Data 13.640s (13.640s)	 Loss 0.00069 (0.00069)	 Accuracy 0.249 (0.249)
+2022-05-12 01:17:57,440 Test: [0/1] - Loss: 0.0006 Accuracy: 0.312
+2022-05-12 01:17:57,827 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 01:17:59,395 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 01:17:59,395 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 01:17:59,395 | mobilenetv2 | 0.870 | 0.988 | 0.942 | 0.548 | 0.876 | 0.889 | 0.993 | 0.952 | 0.654 | 0.895 |
+2022-05-12 01:17:59,410 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 01:18:13,743 Epoch: [65][0/35]	 Time 14.093s (14.093s)	 Speed 72.7 samples/s	 Data 13.046s (13.046s)	 Loss 0.00067 (0.00067)	 Accuracy 0.274 (0.274)
+2022-05-12 01:25:31,029 Test: [0/1] - Loss: 0.0006 Accuracy: 0.308
+2022-05-12 01:25:31,406 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 01:25:32,954 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 01:25:32,955 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 01:25:32,955 | mobilenetv2 | 0.870 | 0.989 | 0.943 | 0.520 | 0.875 | 0.890 | 0.993 | 0.951 | 0.646 | 0.896 |
+2022-05-12 01:25:32,966 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 01:25:47,369 Epoch: [66][0/35]	 Time 14.163s (14.163s)	 Speed 72.3 samples/s	 Data 13.103s (13.103s)	 Loss 0.00068 (0.00068)	 Accuracy 0.258 (0.258)
+2022-05-12 01:33:00,308 Test: [0/1] - Loss: 0.0006 Accuracy: 0.315
+2022-05-12 01:33:00,692 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 01:33:02,241 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 01:33:02,241 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 01:33:02,241 | mobilenetv2 | 0.875 | 0.988 | 0.933 | 0.534 | 0.882 | 0.895 | 0.995 | 0.950 | 0.649 | 0.901 |
+2022-05-12 01:33:02,252 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 01:33:16,788 Epoch: [67][0/35]	 Time 14.244s (14.244s)	 Speed 71.9 samples/s	 Data 13.194s (13.194s)	 Loss 0.00067 (0.00067)	 Accuracy 0.270 (0.270)
+2022-05-12 01:40:29,732 Test: [0/1] - Loss: 0.0006 Accuracy: 0.322
+2022-05-12 01:40:30,140 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 01:40:31,686 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 01:40:31,687 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 01:40:31,687 | mobilenetv2 | 0.881 | 0.989 | 0.944 | 0.538 | 0.886 | 0.898 | 0.993 | 0.956 | 0.649 | 0.904 |
+2022-05-12 01:40:31,698 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 01:40:45,804 Epoch: [68][0/35]	 Time 13.874s (13.874s)	 Speed 73.8 samples/s	 Data 12.844s (12.844s)	 Loss 0.00066 (0.00066)	 Accuracy 0.271 (0.271)
+2022-05-12 01:47:50,156 Test: [0/1] - Loss: 0.0006 Accuracy: 0.317
+2022-05-12 01:47:50,606 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 01:47:52,133 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 01:47:52,133 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 01:47:52,133 | mobilenetv2 | 0.878 | 0.990 | 0.946 | 0.536 | 0.882 | 0.895 | 0.994 | 0.954 | 0.649 | 0.901 |
+2022-05-12 01:47:52,144 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 01:48:05,695 Epoch: [69][0/35]	 Time 13.406s (13.406s)	 Speed 76.4 samples/s	 Data 12.238s (12.238s)	 Loss 0.00067 (0.00067)	 Accuracy 0.262 (0.262)
+2022-05-12 01:55:11,411 Test: [0/1] - Loss: 0.0006 Accuracy: 0.307
+2022-05-12 01:55:11,819 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 01:55:13,359 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 01:55:13,359 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 01:55:13,359 | mobilenetv2 | 0.872 | 0.989 | 0.942 | 0.550 | 0.876 | 0.893 | 0.997 | 0.953 | 0.664 | 0.899 |
+2022-05-12 01:55:13,372 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 01:55:27,709 Epoch: [70][0/35]	 Time 14.186s (14.186s)	 Speed 72.2 samples/s	 Data 12.997s (12.997s)	 Loss 0.00066 (0.00066)	 Accuracy 0.259 (0.259)
+2022-05-12 02:02:43,919 Test: [0/1] - Loss: 0.0006 Accuracy: 0.323
+2022-05-12 02:02:44,357 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 02:02:46,000 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 02:02:46,000 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 02:02:46,000 | mobilenetv2 | 0.879 | 0.989 | 0.944 | 0.537 | 0.885 | 0.900 | 0.996 | 0.959 | 0.664 | 0.906 |
+2022-05-12 02:02:46,013 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 02:03:00,699 Epoch: [71][0/35]	 Time 14.535s (14.535s)	 Speed 70.5 samples/s	 Data 13.448s (13.448s)	 Loss 0.00065 (0.00065)	 Accuracy 0.276 (0.276)
+2022-05-12 02:10:17,426 Test: [0/1] - Loss: 0.0006 Accuracy: 0.315
+2022-05-12 02:10:17,818 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 02:10:19,371 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 02:10:19,371 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 02:10:19,372 | mobilenetv2 | 0.875 | 0.989 | 0.944 | 0.516 | 0.881 | 0.896 | 0.993 | 0.954 | 0.638 | 0.902 |
+2022-05-12 02:10:19,386 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 02:10:34,093 Epoch: [72][0/35]	 Time 14.562s (14.562s)	 Speed 70.3 samples/s	 Data 13.337s (13.337s)	 Loss 0.00067 (0.00067)	 Accuracy 0.263 (0.263)
+2022-05-12 02:17:44,646 Test: [0/1] - Loss: 0.0006 Accuracy: 0.306
+2022-05-12 02:17:45,026 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 02:17:46,568 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 02:17:46,568 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 02:17:46,568 | mobilenetv2 | 0.872 | 0.990 | 0.947 | 0.531 | 0.878 | 0.891 | 0.995 | 0.952 | 0.633 | 0.897 |
+2022-05-12 02:17:46,580 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 02:18:01,595 Epoch: [73][0/35]	 Time 14.871s (14.871s)	 Speed 68.9 samples/s	 Data 13.713s (13.713s)	 Loss 0.00066 (0.00066)	 Accuracy 0.264 (0.264)
+2022-05-12 02:25:14,760 Test: [0/1] - Loss: 0.0006 Accuracy: 0.283
+2022-05-12 02:25:15,148 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 02:25:16,670 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 02:25:16,670 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 02:25:16,670 | mobilenetv2 | 0.867 | 0.989 | 0.946 | 0.523 | 0.873 | 0.888 | 0.995 | 0.957 | 0.664 | 0.894 |
+2022-05-12 02:25:16,681 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 02:25:30,923 Epoch: [74][0/35]	 Time 14.096s (14.096s)	 Speed 72.6 samples/s	 Data 13.080s (13.080s)	 Loss 0.00067 (0.00067)	 Accuracy 0.258 (0.258)
+2022-05-12 02:32:45,735 Test: [0/1] - Loss: 0.0006 Accuracy: 0.283
+2022-05-12 02:32:46,126 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 02:32:47,803 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 02:32:47,804 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 02:32:47,804 | mobilenetv2 | 0.859 | 0.989 | 0.944 | 0.505 | 0.867 | 0.884 | 0.995 | 0.956 | 0.621 | 0.890 |
+2022-05-12 02:32:47,814 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 02:33:02,367 Epoch: [75][0/35]	 Time 14.407s (14.407s)	 Speed 71.1 samples/s	 Data 13.332s (13.332s)	 Loss 0.00067 (0.00067)	 Accuracy 0.256 (0.256)
+2022-05-12 02:40:17,840 Test: [0/1] - Loss: 0.0006 Accuracy: 0.324
+2022-05-12 02:40:18,227 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 02:40:19,873 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 02:40:19,873 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 02:40:19,874 | mobilenetv2 | 0.885 | 0.989 | 0.944 | 0.569 | 0.891 | 0.903 | 0.995 | 0.958 | 0.664 | 0.908 |
+2022-05-12 02:40:19,884 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 02:40:34,411 Epoch: [76][0/35]	 Time 14.305s (14.305s)	 Speed 71.6 samples/s	 Data 13.259s (13.259s)	 Loss 0.00063 (0.00063)	 Accuracy 0.290 (0.290)
+2022-05-12 02:47:48,978 Test: [0/1] - Loss: 0.0006 Accuracy: 0.334
+2022-05-12 02:47:49,364 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 02:47:51,010 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 02:47:51,010 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 02:47:51,010 | mobilenetv2 | 0.884 | 0.989 | 0.944 | 0.551 | 0.890 | 0.904 | 0.995 | 0.959 | 0.700 | 0.909 |
+2022-05-12 02:47:51,020 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 02:48:05,511 Epoch: [77][0/35]	 Time 14.350s (14.350s)	 Speed 71.4 samples/s	 Data 13.269s (13.269s)	 Loss 0.00063 (0.00063)	 Accuracy 0.285 (0.285)
+2022-05-12 02:55:18,038 Test: [0/1] - Loss: 0.0006 Accuracy: 0.325
+2022-05-12 02:55:18,411 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 02:55:20,061 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 02:55:20,061 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 02:55:20,061 | mobilenetv2 | 0.884 | 0.989 | 0.946 | 0.558 | 0.890 | 0.902 | 0.992 | 0.958 | 0.679 | 0.907 |
+2022-05-12 02:55:20,072 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 02:55:33,783 Epoch: [78][0/35]	 Time 13.571s (13.571s)	 Speed 75.5 samples/s	 Data 12.507s (12.507s)	 Loss 0.00064 (0.00064)	 Accuracy 0.284 (0.284)
+2022-05-12 03:02:47,874 Test: [0/1] - Loss: 0.0006 Accuracy: 0.337
+2022-05-12 03:02:48,284 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 03:02:49,963 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 03:02:49,964 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 03:02:49,964 | mobilenetv2 | 0.888 | 0.989 | 0.954 | 0.552 | 0.893 | 0.906 | 0.995 | 0.960 | 0.664 | 0.912 |
+2022-05-12 03:02:49,974 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 03:03:03,885 Epoch: [79][0/35]	 Time 13.689s (13.689s)	 Speed 74.8 samples/s	 Data 12.602s (12.602s)	 Loss 0.00062 (0.00062)	 Accuracy 0.298 (0.298)
+2022-05-12 03:10:16,344 Test: [0/1] - Loss: 0.0006 Accuracy: 0.324
+2022-05-12 03:10:16,750 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 03:10:18,276 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 03:10:18,277 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 03:10:18,277 | mobilenetv2 | 0.882 | 0.989 | 0.955 | 0.531 | 0.887 | 0.899 | 0.995 | 0.960 | 0.659 | 0.905 |
+2022-05-12 03:10:18,288 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 03:10:32,365 Epoch: [80][0/35]	 Time 13.938s (13.938s)	 Speed 73.5 samples/s	 Data 12.772s (12.772s)	 Loss 0.00062 (0.00062)	 Accuracy 0.287 (0.287)
+2022-05-12 03:17:44,545 Test: [0/1] - Loss: 0.0006 Accuracy: 0.324
+2022-05-12 03:17:44,924 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 03:17:46,478 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 03:17:46,478 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 03:17:46,478 | mobilenetv2 | 0.886 | 0.990 | 0.957 | 0.565 | 0.891 | 0.903 | 0.994 | 0.960 | 0.679 | 0.908 |
+2022-05-12 03:17:46,491 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 03:18:00,629 Epoch: [81][0/35]	 Time 13.992s (13.992s)	 Speed 73.2 samples/s	 Data 12.950s (12.950s)	 Loss 0.00063 (0.00063)	 Accuracy 0.285 (0.285)
+2022-05-12 03:25:17,781 Test: [0/1] - Loss: 0.0006 Accuracy: 0.344
+2022-05-12 03:25:18,176 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 03:25:19,855 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 03:25:19,855 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 03:25:19,855 | mobilenetv2 | 0.894 | 0.989 | 0.956 | 0.573 | 0.899 | 0.911 | 0.995 | 0.965 | 0.695 | 0.916 |
+2022-05-12 03:25:19,866 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 03:25:34,628 Epoch: [82][0/35]	 Time 14.521s (14.521s)	 Speed 70.5 samples/s	 Data 13.464s (13.464s)	 Loss 0.00064 (0.00064)	 Accuracy 0.281 (0.281)
+2022-05-12 03:32:47,682 Test: [0/1] - Loss: 0.0005 Accuracy: 0.345
+2022-05-12 03:32:48,080 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 03:32:49,638 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 03:32:49,638 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 03:32:49,638 | mobilenetv2 | 0.892 | 0.989 | 0.956 | 0.581 | 0.897 | 0.912 | 0.995 | 0.964 | 0.705 | 0.917 |
+2022-05-12 03:32:49,649 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 03:33:03,895 Epoch: [83][0/35]	 Time 14.101s (14.101s)	 Speed 72.6 samples/s	 Data 13.073s (13.073s)	 Loss 0.00062 (0.00062)	 Accuracy 0.296 (0.296)
+2022-05-12 03:40:21,752 Test: [0/1] - Loss: 0.0006 Accuracy: 0.335
+2022-05-12 03:40:22,134 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 03:40:23,693 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 03:40:23,694 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 03:40:23,694 | mobilenetv2 | 0.890 | 0.990 | 0.946 | 0.578 | 0.896 | 0.908 | 0.995 | 0.958 | 0.700 | 0.912 |
+2022-05-12 03:40:23,705 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 03:40:37,792 Epoch: [84][0/35]	 Time 13.944s (13.944s)	 Speed 73.4 samples/s	 Data 12.900s (12.900s)	 Loss 0.00063 (0.00063)	 Accuracy 0.289 (0.289)
+2022-05-12 03:47:48,230 Test: [0/1] - Loss: 0.0005 Accuracy: 0.349
+2022-05-12 03:47:48,625 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 03:47:50,283 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 03:47:50,283 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 03:47:50,283 | mobilenetv2 | 0.897 | 0.990 | 0.957 | 0.564 | 0.903 | 0.913 | 0.995 | 0.964 | 0.697 | 0.918 |
+2022-05-12 03:47:50,294 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 03:48:04,480 Epoch: [85][0/35]	 Time 13.961s (13.961s)	 Speed 73.3 samples/s	 Data 12.886s (12.886s)	 Loss 0.00061 (0.00061)	 Accuracy 0.298 (0.298)
+2022-05-12 03:55:17,689 Test: [0/1] - Loss: 0.0006 Accuracy: 0.323
+2022-05-12 03:55:18,085 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 03:55:19,735 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 03:55:19,736 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 03:55:19,736 | mobilenetv2 | 0.888 | 0.989 | 0.955 | 0.568 | 0.894 | 0.908 | 0.995 | 0.964 | 0.700 | 0.912 |
+2022-05-12 03:55:19,747 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 03:55:34,262 Epoch: [86][0/35]	 Time 14.373s (14.373s)	 Speed 71.2 samples/s	 Data 13.330s (13.330s)	 Loss 0.00062 (0.00062)	 Accuracy 0.291 (0.291)
+2022-05-12 04:02:47,279 Test: [0/1] - Loss: 0.0006 Accuracy: 0.333
+2022-05-12 04:02:47,661 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 04:02:49,265 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 04:02:49,266 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 04:02:49,266 | mobilenetv2 | 0.891 | 0.989 | 0.955 | 0.547 | 0.897 | 0.909 | 0.995 | 0.962 | 0.677 | 0.915 |
+2022-05-12 04:02:49,277 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 04:03:03,322 Epoch: [87][0/35]	 Time 13.903s (13.903s)	 Speed 73.7 samples/s	 Data 12.827s (12.827s)	 Loss 0.00062 (0.00062)	 Accuracy 0.298 (0.298)
+2022-05-12 04:10:18,685 Test: [0/1] - Loss: 0.0006 Accuracy: 0.309
+2022-05-12 04:10:19,118 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 04:10:20,674 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 04:10:20,675 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 04:10:20,675 | mobilenetv2 | 0.879 | 0.989 | 0.955 | 0.583 | 0.883 | 0.901 | 0.997 | 0.960 | 0.715 | 0.905 |
+2022-05-12 04:10:20,687 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 04:10:35,319 Epoch: [88][0/35]	 Time 14.483s (14.483s)	 Speed 70.7 samples/s	 Data 13.238s (13.238s)	 Loss 0.00064 (0.00064)	 Accuracy 0.275 (0.275)
+2022-05-12 04:17:52,976 Test: [0/1] - Loss: 0.0005 Accuracy: 0.337
+2022-05-12 04:17:53,384 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 04:17:54,959 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 04:17:54,960 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 04:17:54,960 | mobilenetv2 | 0.893 | 0.990 | 0.957 | 0.590 | 0.898 | 0.912 | 0.995 | 0.962 | 0.721 | 0.916 |
+2022-05-12 04:17:54,972 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 04:18:09,404 Epoch: [89][0/35]	 Time 14.289s (14.289s)	 Speed 71.7 samples/s	 Data 13.257s (13.257s)	 Loss 0.00062 (0.00062)	 Accuracy 0.292 (0.292)
+2022-05-12 04:25:37,577 Test: [0/1] - Loss: 0.0005 Accuracy: 0.351
+2022-05-12 04:25:37,928 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 04:25:39,593 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 04:25:39,594 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 04:25:39,594 | mobilenetv2 | 0.895 | 0.989 | 0.953 | 0.576 | 0.901 | 0.915 | 0.996 | 0.964 | 0.721 | 0.919 |
+2022-05-12 04:25:39,604 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 04:25:54,265 Epoch: [90][0/35]	 Time 14.520s (14.520s)	 Speed 70.5 samples/s	 Data 13.466s (13.466s)	 Loss 0.00060 (0.00060)	 Accuracy 0.313 (0.313)
+2022-05-12 04:33:15,129 Test: [0/1] - Loss: 0.0005 Accuracy: 0.354
+2022-05-12 04:33:15,541 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 04:33:17,066 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 04:33:17,067 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 04:33:17,067 | mobilenetv2 | 0.900 | 0.990 | 0.958 | 0.598 | 0.905 | 0.917 | 0.997 | 0.964 | 0.708 | 0.922 |
+2022-05-12 04:33:17,077 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 04:33:31,240 Epoch: [91][0/35]	 Time 13.922s (13.922s)	 Speed 73.6 samples/s	 Data 12.878s (12.878s)	 Loss 0.00062 (0.00062)	 Accuracy 0.301 (0.301)
+2022-05-12 04:40:43,613 Test: [0/1] - Loss: 0.0005 Accuracy: 0.351
+2022-05-12 04:40:43,995 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 04:40:45,593 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 04:40:45,594 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 04:40:45,594 | mobilenetv2 | 0.899 | 0.990 | 0.956 | 0.541 | 0.905 | 0.915 | 0.995 | 0.960 | 0.685 | 0.920 |
+2022-05-12 04:40:45,607 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 04:41:00,197 Epoch: [92][0/35]	 Time 14.434s (14.434s)	 Speed 70.9 samples/s	 Data 13.393s (13.393s)	 Loss 0.00059 (0.00059)	 Accuracy 0.301 (0.301)
+2022-05-12 04:48:19,447 Test: [0/1] - Loss: 0.0006 Accuracy: 0.332
+2022-05-12 04:48:19,888 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 04:48:21,421 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 04:48:21,422 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 04:48:21,422 | mobilenetv2 | 0.889 | 0.989 | 0.946 | 0.564 | 0.894 | 0.909 | 0.995 | 0.959 | 0.715 | 0.913 |
+2022-05-12 04:48:21,434 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 04:48:36,203 Epoch: [93][0/35]	 Time 14.618s (14.618s)	 Speed 70.0 samples/s	 Data 13.564s (13.564s)	 Loss 0.00061 (0.00061)	 Accuracy 0.297 (0.297)
+2022-05-12 04:55:55,046 Test: [0/1] - Loss: 0.0005 Accuracy: 0.358
+2022-05-12 04:55:55,481 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 04:55:57,242 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 04:55:57,243 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 04:55:57,243 | mobilenetv2 | 0.899 | 0.989 | 0.956 | 0.546 | 0.905 | 0.916 | 0.995 | 0.962 | 0.692 | 0.921 |
+2022-05-12 04:55:57,256 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 04:56:11,929 Epoch: [94][0/35]	 Time 14.529s (14.529s)	 Speed 70.5 samples/s	 Data 13.509s (13.509s)	 Loss 0.00061 (0.00061)	 Accuracy 0.302 (0.302)
+2022-05-12 05:03:30,472 Test: [0/1] - Loss: 0.0005 Accuracy: 0.351
+2022-05-12 05:03:30,867 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 05:03:32,421 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 05:03:32,421 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 05:03:32,421 | mobilenetv2 | 0.898 | 0.989 | 0.956 | 0.577 | 0.904 | 0.916 | 0.995 | 0.963 | 0.721 | 0.921 |
+2022-05-12 05:03:32,432 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 05:03:46,771 Epoch: [95][0/35]	 Time 14.192s (14.192s)	 Speed 72.2 samples/s	 Data 13.135s (13.135s)	 Loss 0.00061 (0.00061)	 Accuracy 0.294 (0.294)
+2022-05-12 05:11:05,666 Test: [0/1] - Loss: 0.0005 Accuracy: 0.345
+2022-05-12 05:11:06,060 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 05:11:07,656 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 05:11:07,656 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 05:11:07,657 | mobilenetv2 | 0.898 | 0.990 | 0.957 | 0.575 | 0.903 | 0.915 | 0.997 | 0.962 | 0.710 | 0.920 |
+2022-05-12 05:11:07,669 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 05:11:22,011 Epoch: [96][0/35]	 Time 14.188s (14.188s)	 Speed 72.2 samples/s	 Data 13.104s (13.104s)	 Loss 0.00061 (0.00061)	 Accuracy 0.295 (0.295)
+2022-05-12 05:18:39,237 Test: [0/1] - Loss: 0.0005 Accuracy: 0.348
+2022-05-12 05:18:39,644 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 05:18:41,323 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 05:18:41,323 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 05:18:41,324 | mobilenetv2 | 0.901 | 0.989 | 0.956 | 0.560 | 0.908 | 0.919 | 0.995 | 0.965 | 0.713 | 0.924 |
+2022-05-12 05:18:41,336 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 05:18:55,631 Epoch: [97][0/35]	 Time 14.054s (14.054s)	 Speed 72.9 samples/s	 Data 12.962s (12.962s)	 Loss 0.00059 (0.00059)	 Accuracy 0.314 (0.314)
+2022-05-12 05:26:08,361 Test: [0/1] - Loss: 0.0005 Accuracy: 0.349
+2022-05-12 05:26:08,793 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 05:26:10,365 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 05:26:10,366 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 05:26:10,366 | mobilenetv2 | 0.898 | 0.990 | 0.958 | 0.589 | 0.904 | 0.916 | 0.995 | 0.965 | 0.726 | 0.921 |
+2022-05-12 05:26:10,382 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 05:26:24,870 Epoch: [98][0/35]	 Time 14.337s (14.337s)	 Speed 71.4 samples/s	 Data 13.112s (13.112s)	 Loss 0.00061 (0.00061)	 Accuracy 0.300 (0.300)
+2022-05-12 05:33:38,741 Test: [0/1] - Loss: 0.0005 Accuracy: 0.341
+2022-05-12 05:33:39,126 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 05:33:40,679 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 05:33:40,679 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 05:33:40,679 | mobilenetv2 | 0.899 | 0.990 | 0.957 | 0.575 | 0.903 | 0.915 | 0.996 | 0.964 | 0.705 | 0.920 |
+2022-05-12 05:33:40,695 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 05:33:54,918 Epoch: [99][0/35]	 Time 14.079s (14.079s)	 Speed 72.7 samples/s	 Data 12.999s (12.999s)	 Loss 0.00061 (0.00061)	 Accuracy 0.300 (0.300)
+2022-05-12 05:41:05,849 Test: [0/1] - Loss: 0.0005 Accuracy: 0.351
+2022-05-12 05:41:06,236 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 05:41:07,785 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 05:41:07,785 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 05:41:07,785 | mobilenetv2 | 0.903 | 0.990 | 0.957 | 0.581 | 0.907 | 0.919 | 0.996 | 0.966 | 0.718 | 0.924 |
+2022-05-12 05:41:07,796 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 05:41:21,779 Epoch: [100][0/35]	 Time 13.734s (13.734s)	 Speed 74.6 samples/s	 Data 12.701s (12.701s)	 Loss 0.00060 (0.00060)	 Accuracy 0.302 (0.302)
+2022-05-12 05:48:29,689 Test: [0/1] - Loss: 0.0005 Accuracy: 0.347
+2022-05-12 05:48:30,111 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 05:48:31,654 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 05:48:31,655 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 05:48:31,655 | mobilenetv2 | 0.901 | 0.990 | 0.957 | 0.559 | 0.906 | 0.918 | 0.996 | 0.966 | 0.721 | 0.923 |
+2022-05-12 05:48:31,666 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 05:48:45,810 Epoch: [101][0/35]	 Time 13.991s (13.991s)	 Speed 73.2 samples/s	 Data 12.960s (12.960s)	 Loss 0.00060 (0.00060)	 Accuracy 0.297 (0.297)
+2022-05-12 05:55:59,156 Test: [0/1] - Loss: 0.0005 Accuracy: 0.365
+2022-05-12 05:55:59,714 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 05:56:01,252 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 05:56:01,253 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 05:56:01,253 | mobilenetv2 | 0.906 | 0.989 | 0.957 | 0.594 | 0.913 | 0.922 | 0.996 | 0.965 | 0.723 | 0.927 |
+2022-05-12 05:56:01,264 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 05:56:15,817 Epoch: [102][0/35]	 Time 14.318s (14.318s)	 Speed 71.5 samples/s	 Data 13.267s (13.267s)	 Loss 0.00061 (0.00061)	 Accuracy 0.301 (0.301)
+2022-05-12 06:03:22,816 Test: [0/1] - Loss: 0.0005 Accuracy: 0.362
+2022-05-12 06:03:23,212 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 06:03:24,913 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 06:03:24,913 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 06:03:24,913 | mobilenetv2 | 0.905 | 0.990 | 0.957 | 0.588 | 0.911 | 0.923 | 0.997 | 0.967 | 0.728 | 0.928 |
+2022-05-12 06:03:24,926 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 06:03:39,189 Epoch: [103][0/35]	 Time 14.104s (14.104s)	 Speed 72.6 samples/s	 Data 13.045s (13.045s)	 Loss 0.00059 (0.00059)	 Accuracy 0.311 (0.311)
+2022-05-12 06:10:52,840 Test: [0/1] - Loss: 0.0005 Accuracy: 0.343
+2022-05-12 06:10:53,259 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 06:10:54,892 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 06:10:54,893 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 06:10:54,893 | mobilenetv2 | 0.897 | 0.990 | 0.957 | 0.534 | 0.906 | 0.915 | 0.994 | 0.964 | 0.667 | 0.921 |
+2022-05-12 06:10:54,904 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 06:11:09,007 Epoch: [104][0/35]	 Time 13.960s (13.960s)	 Speed 73.4 samples/s	 Data 12.926s (12.926s)	 Loss 0.00060 (0.00060)	 Accuracy 0.300 (0.300)
+2022-05-12 06:18:19,217 Test: [0/1] - Loss: 0.0005 Accuracy: 0.355
+2022-05-12 06:18:19,602 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 06:18:21,135 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 06:18:21,135 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 06:18:21,135 | mobilenetv2 | 0.901 | 0.990 | 0.956 | 0.594 | 0.907 | 0.918 | 0.996 | 0.962 | 0.744 | 0.923 |
+2022-05-12 06:18:21,146 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 06:18:35,659 Epoch: [105][0/35]	 Time 14.371s (14.371s)	 Speed 71.3 samples/s	 Data 13.339s (13.339s)	 Loss 0.00059 (0.00059)	 Accuracy 0.310 (0.310)
+2022-05-12 06:25:50,809 Test: [0/1] - Loss: 0.0005 Accuracy: 0.360
+2022-05-12 06:25:51,200 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 06:25:52,912 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 06:25:52,913 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 06:25:52,913 | mobilenetv2 | 0.903 | 0.989 | 0.954 | 0.603 | 0.906 | 0.920 | 0.995 | 0.962 | 0.733 | 0.924 |
+2022-05-12 06:25:52,926 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 06:26:07,506 Epoch: [106][0/35]	 Time 14.434s (14.434s)	 Speed 70.9 samples/s	 Data 13.390s (13.390s)	 Loss 0.00059 (0.00059)	 Accuracy 0.312 (0.312)
+2022-05-12 06:33:23,517 Test: [0/1] - Loss: 0.0005 Accuracy: 0.362
+2022-05-12 06:33:23,937 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 06:33:25,498 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 06:33:25,498 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 06:33:25,498 | mobilenetv2 | 0.907 | 0.989 | 0.957 | 0.601 | 0.915 | 0.925 | 0.996 | 0.968 | 0.746 | 0.929 |
+2022-05-12 06:33:25,511 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 06:33:40,077 Epoch: [107][0/35]	 Time 14.327s (14.327s)	 Speed 71.5 samples/s	 Data 13.285s (13.285s)	 Loss 0.00059 (0.00059)	 Accuracy 0.312 (0.312)
+2022-05-12 06:40:57,502 Test: [0/1] - Loss: 0.0005 Accuracy: 0.366
+2022-05-12 06:40:57,927 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 06:40:59,593 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 06:40:59,594 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 06:40:59,594 | mobilenetv2 | 0.906 | 0.990 | 0.957 | 0.591 | 0.913 | 0.924 | 0.995 | 0.966 | 0.723 | 0.929 |
+2022-05-12 06:40:59,605 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 06:41:14,385 Epoch: [108][0/35]	 Time 14.635s (14.635s)	 Speed 70.0 samples/s	 Data 13.571s (13.571s)	 Loss 0.00058 (0.00058)	 Accuracy 0.312 (0.312)
+2022-05-12 06:48:29,593 Test: [0/1] - Loss: 0.0005 Accuracy: 0.373
+2022-05-12 06:48:29,987 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 06:48:31,534 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 06:48:31,534 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 06:48:31,535 | mobilenetv2 | 0.908 | 0.990 | 0.956 | 0.609 | 0.913 | 0.925 | 0.995 | 0.966 | 0.746 | 0.929 |
+2022-05-12 06:48:31,548 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 06:48:45,618 Epoch: [109][0/35]	 Time 13.785s (13.785s)	 Speed 74.3 samples/s	 Data 12.720s (12.720s)	 Loss 0.00058 (0.00058)	 Accuracy 0.324 (0.324)
+2022-05-12 06:55:58,808 Test: [0/1] - Loss: 0.0005 Accuracy: 0.362
+2022-05-12 06:55:59,179 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 06:56:00,852 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 06:56:00,852 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 06:56:00,852 | mobilenetv2 | 0.905 | 0.990 | 0.957 | 0.586 | 0.910 | 0.922 | 0.997 | 0.967 | 0.723 | 0.927 |
+2022-05-12 06:56:00,865 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 06:56:15,338 Epoch: [110][0/35]	 Time 14.329s (14.329s)	 Speed 71.5 samples/s	 Data 13.294s (13.294s)	 Loss 0.00058 (0.00058)	 Accuracy 0.317 (0.317)
+2022-05-12 07:03:28,677 Test: [0/1] - Loss: 0.0005 Accuracy: 0.349
+2022-05-12 07:03:29,274 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 07:03:30,792 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 07:03:30,792 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 07:03:30,792 | mobilenetv2 | 0.904 | 0.990 | 0.957 | 0.573 | 0.907 | 0.920 | 0.995 | 0.966 | 0.723 | 0.924 |
+2022-05-12 07:03:30,802 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 07:03:44,965 Epoch: [111][0/35]	 Time 14.023s (14.023s)	 Speed 73.0 samples/s	 Data 12.967s (12.967s)	 Loss 0.00059 (0.00059)	 Accuracy 0.313 (0.313)
+2022-05-12 07:11:04,352 Test: [0/1] - Loss: 0.0005 Accuracy: 0.373
+2022-05-12 07:11:04,852 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 07:11:06,370 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 07:11:06,370 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 07:11:06,370 | mobilenetv2 | 0.911 | 0.990 | 0.958 | 0.611 | 0.917 | 0.926 | 0.995 | 0.967 | 0.731 | 0.931 |
+2022-05-12 07:11:06,381 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 07:11:20,920 Epoch: [112][0/35]	 Time 14.325s (14.325s)	 Speed 71.5 samples/s	 Data 13.300s (13.300s)	 Loss 0.00057 (0.00057)	 Accuracy 0.320 (0.320)
+2022-05-12 07:18:40,675 Test: [0/1] - Loss: 0.0005 Accuracy: 0.359
+2022-05-12 07:18:41,046 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 07:18:42,581 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 07:18:42,581 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 07:18:42,581 | mobilenetv2 | 0.907 | 0.989 | 0.956 | 0.612 | 0.913 | 0.924 | 0.997 | 0.969 | 0.731 | 0.928 |
+2022-05-12 07:18:42,593 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 07:18:57,274 Epoch: [113][0/35]	 Time 14.541s (14.541s)	 Speed 70.4 samples/s	 Data 13.487s (13.487s)	 Loss 0.00058 (0.00058)	 Accuracy 0.318 (0.318)
+2022-05-12 07:26:05,082 Test: [0/1] - Loss: 0.0005 Accuracy: 0.353
+2022-05-12 07:26:05,453 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 07:26:07,013 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 07:26:07,013 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 07:26:07,013 | mobilenetv2 | 0.909 | 0.990 | 0.956 | 0.617 | 0.915 | 0.925 | 0.995 | 0.966 | 0.733 | 0.930 |
+2022-05-12 07:26:07,025 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 07:26:21,941 Epoch: [114][0/35]	 Time 14.773s (14.773s)	 Speed 69.3 samples/s	 Data 13.708s (13.708s)	 Loss 0.00057 (0.00057)	 Accuracy 0.315 (0.315)
+2022-05-12 07:33:37,721 Test: [0/1] - Loss: 0.0005 Accuracy: 0.361
+2022-05-12 07:33:38,101 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 07:33:39,625 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 07:33:39,625 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 07:33:39,625 | mobilenetv2 | 0.909 | 0.990 | 0.957 | 0.598 | 0.914 | 0.926 | 0.997 | 0.963 | 0.741 | 0.930 |
+2022-05-12 07:33:39,637 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 07:33:54,143 Epoch: [115][0/35]	 Time 14.360s (14.360s)	 Speed 71.3 samples/s	 Data 13.312s (13.312s)	 Loss 0.00057 (0.00057)	 Accuracy 0.320 (0.320)
+2022-05-12 07:41:10,058 Test: [0/1] - Loss: 0.0005 Accuracy: 0.387
+2022-05-12 07:41:10,480 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 07:41:12,021 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 07:41:12,022 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 07:41:12,022 | mobilenetv2 | 0.914 | 0.990 | 0.957 | 0.621 | 0.919 | 0.930 | 0.996 | 0.967 | 0.738 | 0.934 |
+2022-05-12 07:41:12,034 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 07:41:26,909 Epoch: [116][0/35]	 Time 14.614s (14.614s)	 Speed 70.1 samples/s	 Data 13.595s (13.595s)	 Loss 0.00057 (0.00057)	 Accuracy 0.327 (0.327)
+2022-05-12 07:48:39,947 Test: [0/1] - Loss: 0.0005 Accuracy: 0.369
+2022-05-12 07:48:40,335 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 07:48:41,994 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 07:48:41,995 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 07:48:41,995 | mobilenetv2 | 0.908 | 0.990 | 0.956 | 0.616 | 0.914 | 0.924 | 0.996 | 0.964 | 0.751 | 0.928 |
+2022-05-12 07:48:42,006 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 07:48:56,726 Epoch: [117][0/35]	 Time 14.580s (14.580s)	 Speed 70.2 samples/s	 Data 13.560s (13.560s)	 Loss 0.00056 (0.00056)	 Accuracy 0.328 (0.328)
+2022-05-12 07:56:22,353 Test: [0/1] - Loss: 0.0005 Accuracy: 0.378
+2022-05-12 07:56:22,754 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 07:56:24,301 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 07:56:24,301 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 07:56:24,302 | mobilenetv2 | 0.913 | 0.990 | 0.958 | 0.586 | 0.920 | 0.928 | 0.997 | 0.968 | 0.721 | 0.933 |
+2022-05-12 07:56:24,316 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 07:56:39,138 Epoch: [118][0/35]	 Time 14.517s (14.517s)	 Speed 70.5 samples/s	 Data 13.505s (13.505s)	 Loss 0.00057 (0.00057)	 Accuracy 0.328 (0.328)
+2022-05-12 08:03:58,001 Test: [0/1] - Loss: 0.0005 Accuracy: 0.370
+2022-05-12 08:03:58,438 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 08:04:00,273 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 08:04:00,273 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 08:04:00,273 | mobilenetv2 | 0.910 | 0.990 | 0.957 | 0.616 | 0.918 | 0.928 | 0.997 | 0.968 | 0.723 | 0.933 |
+2022-05-12 08:04:00,283 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 08:04:15,075 Epoch: [119][0/35]	 Time 14.650s (14.650s)	 Speed 69.9 samples/s	 Data 13.575s (13.575s)	 Loss 0.00057 (0.00057)	 Accuracy 0.324 (0.324)
+2022-05-12 08:11:35,547 Test: [0/1] - Loss: 0.0005 Accuracy: 0.378
+2022-05-12 08:11:35,938 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 08:11:37,622 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 08:11:37,622 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 08:11:37,622 | mobilenetv2 | 0.914 | 0.990 | 0.968 | 0.628 | 0.918 | 0.929 | 0.997 | 0.972 | 0.749 | 0.933 |
+2022-05-12 08:11:37,633 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 08:11:52,487 Epoch: [120][0/35]	 Time 14.619s (14.619s)	 Speed 70.0 samples/s	 Data 13.588s (13.588s)	 Loss 0.00056 (0.00056)	 Accuracy 0.335 (0.335)
+2022-05-12 08:19:12,927 Test: [0/1] - Loss: 0.0005 Accuracy: 0.380
+2022-05-12 08:19:13,325 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 08:19:14,866 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 08:19:14,867 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 08:19:14,867 | mobilenetv2 | 0.913 | 0.989 | 0.957 | 0.611 | 0.921 | 0.930 | 0.997 | 0.968 | 0.736 | 0.934 |
+2022-05-12 08:19:14,878 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 08:19:29,161 Epoch: [121][0/35]	 Time 14.138s (14.138s)	 Speed 72.4 samples/s	 Data 13.068s (13.068s)	 Loss 0.00057 (0.00057)	 Accuracy 0.319 (0.319)
+2022-05-12 08:26:48,922 Test: [0/1] - Loss: 0.0005 Accuracy: 0.328
+2022-05-12 08:26:49,325 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 08:26:50,867 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 08:26:50,868 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 08:26:50,868 | mobilenetv2 | 0.901 | 0.990 | 0.957 | 0.576 | 0.906 | 0.918 | 0.995 | 0.965 | 0.749 | 0.922 |
+2022-05-12 08:26:50,885 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 08:27:05,061 Epoch: [122][0/35]	 Time 14.029s (14.029s)	 Speed 73.0 samples/s	 Data 13.016s (13.016s)	 Loss 0.00062 (0.00062)	 Accuracy 0.276 (0.276)
+2022-05-12 08:34:23,531 Test: [0/1] - Loss: 0.0005 Accuracy: 0.376
+2022-05-12 08:34:23,928 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 08:34:25,470 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 08:34:25,470 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 08:34:25,470 | mobilenetv2 | 0.911 | 0.990 | 0.957 | 0.606 | 0.918 | 0.928 | 0.997 | 0.965 | 0.733 | 0.932 |
+2022-05-12 08:34:25,484 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 08:34:39,629 Epoch: [123][0/35]	 Time 13.995s (13.995s)	 Speed 73.2 samples/s	 Data 12.950s (12.950s)	 Loss 0.00057 (0.00057)	 Accuracy 0.324 (0.324)
+2022-05-12 08:41:57,786 Test: [0/1] - Loss: 0.0005 Accuracy: 0.363
+2022-05-12 08:41:58,200 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 08:41:59,752 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 08:41:59,753 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 08:41:59,753 | mobilenetv2 | 0.908 | 0.990 | 0.957 | 0.593 | 0.915 | 0.926 | 0.995 | 0.966 | 0.749 | 0.930 |
+2022-05-12 08:41:59,767 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 08:42:14,852 Epoch: [124][0/35]	 Time 14.940s (14.940s)	 Speed 68.5 samples/s	 Data 13.822s (13.822s)	 Loss 0.00056 (0.00056)	 Accuracy 0.330 (0.330)
+2022-05-12 08:49:28,525 Test: [0/1] - Loss: 0.0005 Accuracy: 0.376
+2022-05-12 08:49:28,921 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 08:49:30,581 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 08:49:30,581 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 08:49:30,581 | mobilenetv2 | 0.914 | 0.990 | 0.968 | 0.630 | 0.918 | 0.929 | 0.997 | 0.970 | 0.774 | 0.932 |
+2022-05-12 08:49:30,593 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 08:49:45,177 Epoch: [125][0/35]	 Time 14.439s (14.439s)	 Speed 70.9 samples/s	 Data 13.395s (13.395s)	 Loss 0.00056 (0.00056)	 Accuracy 0.337 (0.337)
+2022-05-12 08:57:06,392 Test: [0/1] - Loss: 0.0005 Accuracy: 0.385
+2022-05-12 08:57:06,793 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 08:57:08,395 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 08:57:08,396 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 08:57:08,396 | mobilenetv2 | 0.917 | 0.990 | 0.968 | 0.613 | 0.922 | 0.931 | 0.996 | 0.971 | 0.764 | 0.935 |
+2022-05-12 08:57:08,407 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 08:57:23,030 Epoch: [126][0/35]	 Time 14.395s (14.395s)	 Speed 71.1 samples/s	 Data 13.368s (13.368s)	 Loss 0.00057 (0.00057)	 Accuracy 0.333 (0.333)
+2022-05-12 09:04:43,465 Test: [0/1] - Loss: 0.0005 Accuracy: 0.334
+2022-05-12 09:04:43,841 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 09:04:45,509 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 09:04:45,509 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 09:04:45,509 | mobilenetv2 | 0.900 | 0.990 | 0.958 | 0.611 | 0.905 | 0.918 | 0.995 | 0.967 | 0.749 | 0.922 |
+2022-05-12 09:04:45,520 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 09:04:59,973 Epoch: [127][0/35]	 Time 14.307s (14.307s)	 Speed 71.6 samples/s	 Data 13.239s (13.239s)	 Loss 0.00059 (0.00059)	 Accuracy 0.304 (0.304)
+2022-05-12 09:12:20,570 Test: [0/1] - Loss: 0.0005 Accuracy: 0.389
+2022-05-12 09:12:21,003 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 09:12:22,754 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 09:12:22,754 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 09:12:22,754 | mobilenetv2 | 0.916 | 0.990 | 0.967 | 0.588 | 0.921 | 0.930 | 0.995 | 0.971 | 0.749 | 0.935 |
+2022-05-12 09:12:22,769 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 09:12:37,574 Epoch: [128][0/35]	 Time 14.649s (14.649s)	 Speed 69.9 samples/s	 Data 13.596s (13.596s)	 Loss 0.00055 (0.00055)	 Accuracy 0.332 (0.332)
+2022-05-12 09:20:00,788 Test: [0/1] - Loss: 0.0005 Accuracy: 0.390
+2022-05-12 09:20:01,159 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 09:20:02,690 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 09:20:02,691 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 09:20:02,691 | mobilenetv2 | 0.919 | 0.990 | 0.958 | 0.639 | 0.923 | 0.933 | 0.995 | 0.968 | 0.774 | 0.937 |
+2022-05-12 09:20:02,710 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 09:20:17,553 Epoch: [129][0/35]	 Time 14.589s (14.589s)	 Speed 70.2 samples/s	 Data 13.528s (13.528s)	 Loss 0.00056 (0.00056)	 Accuracy 0.333 (0.333)
+2022-05-12 09:27:35,129 Test: [0/1] - Loss: 0.0005 Accuracy: 0.347
+2022-05-12 09:27:35,539 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 09:27:37,096 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 09:27:37,097 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 09:27:37,097 | mobilenetv2 | 0.908 | 0.990 | 0.958 | 0.608 | 0.913 | 0.924 | 0.996 | 0.966 | 0.759 | 0.929 |
+2022-05-12 09:27:37,109 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 09:27:51,944 Epoch: [130][0/35]	 Time 14.690s (14.690s)	 Speed 69.7 samples/s	 Data 13.612s (13.612s)	 Loss 0.00057 (0.00057)	 Accuracy 0.321 (0.321)
+2022-05-12 09:35:04,930 Test: [0/1] - Loss: 0.0005 Accuracy: 0.388
+2022-05-12 09:35:05,297 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 09:35:06,850 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 09:35:06,850 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 09:35:06,851 | mobilenetv2 | 0.917 | 0.990 | 0.958 | 0.628 | 0.923 | 0.933 | 0.997 | 0.968 | 0.762 | 0.937 |
+2022-05-12 09:35:06,865 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 09:35:21,438 Epoch: [131][0/35]	 Time 14.425s (14.425s)	 Speed 71.0 samples/s	 Data 13.311s (13.311s)	 Loss 0.00055 (0.00055)	 Accuracy 0.341 (0.341)
+2022-05-12 09:42:36,295 Test: [0/1] - Loss: 0.0005 Accuracy: 0.377
+2022-05-12 09:42:36,684 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 09:42:38,423 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 09:42:38,423 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 09:42:38,423 | mobilenetv2 | 0.912 | 0.990 | 0.958 | 0.613 | 0.919 | 0.930 | 0.997 | 0.969 | 0.769 | 0.933 |
+2022-05-12 09:42:38,434 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 09:42:52,994 Epoch: [132][0/35]	 Time 14.415s (14.415s)	 Speed 71.0 samples/s	 Data 13.381s (13.381s)	 Loss 0.00056 (0.00056)	 Accuracy 0.326 (0.326)
+2022-05-12 09:50:08,139 Test: [0/1] - Loss: 0.0005 Accuracy: 0.393
+2022-05-12 09:50:08,519 => writing results json to output/hand_coco/mobilenetv2/debug/results/keypoints_val2017_results_0.json
+2022-05-12 09:50:10,046 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2022-05-12 09:50:10,046 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+2022-05-12 09:50:10,046 | mobilenetv2 | 0.920 | 0.990 | 0.958 | 0.620 | 0.926 | 0.934 | 0.997 | 0.969 | 0.762 | 0.938 |
+2022-05-12 09:50:10,057 => saving checkpoint to output/hand_coco/mobilenetv2/debug
+2022-05-12 09:50:24,183 Epoch: [133][0/35]	 Time 13.902s (13.902s)	 Speed 73.7 samples/s	 Data 12.848s (12.848s)	 Loss 0.00054 (0.00054)	 Accuracy 0.343 (0.343)
